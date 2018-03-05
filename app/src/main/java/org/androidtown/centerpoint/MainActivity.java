@@ -17,7 +17,7 @@ import java.lang.reflect.Field;
  * Created by Seo Sung Joon on 2017-09-11 011.
  */
 
-//test
+
 public class MainActivity extends AppCompatActivity {
     private static String str_sel;
     TextView textView;
