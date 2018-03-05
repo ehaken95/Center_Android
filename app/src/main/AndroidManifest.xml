@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.androidtown.centerpoint">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:background="#FFFFFF"
@@ -22,8 +25,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".Screen3Activity"></activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".Screen3Activity" />
+
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="35d22b3f20255ee7794364ed4ca45a88 " />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBBsRw3z-ayQvdL2h3vtVloNZqOWyzwnZA"/>
+
+        <activity android:name=".MapViewPage"></activity>
     </application>
 
 </manifest>
