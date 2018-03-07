@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         spinner.setAdapter(adapter);
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
-
+        //스피너로 값을 선택하기 위함
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view,
                                        int position, long id) {
@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         });
         
     }
+    //선택된 값을 다음 화면으로 넘기기 위한 구문
     public void onButtonClicked(View v) {
         if (!str_sel.equals("선택!")) {
             Intent it3 = new Intent(getApplicationContext(),Screen3Activity.class);

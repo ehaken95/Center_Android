@@ -18,7 +18,8 @@ import static org.androidtown.centerpoint.R.id.textView7;
 
 public class Screen3Activity extends AppCompatActivity {
     TextView textView;
-
+    //첫번째 화면에서 선택된 값을 이쪽으로 가져온 후
+    //인원수를 조정하기 위함
     String[] items = {"선택!","2","3","4","5","6"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,9 +77,9 @@ public class Screen3Activity extends AppCompatActivity {
         }
         //여기까지
         spinner.setAdapter(adapter);
-        //******************************
+
         spinner.setSelection(pos);
-        //******************************
+
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
 
@@ -86,7 +87,7 @@ public class Screen3Activity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view,
                                        int position, long id) {
             setVisibility(spinner.getSelectedItemPosition());
-            }
+            }//인원 선택시 ui숨김 설정하는 함수이동
             @Override
             public void onNothingSelected(AdapterView<?> adapterView){
             }
@@ -98,6 +99,7 @@ public class Screen3Activity extends AppCompatActivity {
         //--------------------------------------------------------------------
 
     }
+    //인원 선택값에 따른 ui숨김/노출 설정
     public void setVisibility(int pos){
         TextView textView = (TextView) findViewById(textView4);
         TextView textView2 = (TextView) findViewById(textView5);
