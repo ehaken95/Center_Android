@@ -19,7 +19,9 @@ import static org.androidtown.centerpoint.R.id.textView7;
 public class Screen3Activity extends AppCompatActivity {
     TextView textView;
 
-    String[] items = {"선택!","2","3","4","5","6"};
+    //첫번째 화면에서 선택된 값을 이쪽으로 가져온 후
+    //인원수를 조정하기 위함
+    String[] items = {"2","3","4","5","6"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,23 +34,23 @@ public class Screen3Activity extends AppCompatActivity {
 
         if(s2_receive.equals("2"))
         {
-            pos=1;
+            pos=0;
         }
         if(s2_receive.equals("3"))
         {
-            pos=2;
+            pos=1;
         }
         if(s2_receive.equals("4"))
         {
-            pos=3;
+            pos=2;
         }
         if(s2_receive.equals("5"))
         {
-            pos=4;
+            pos=3;
         }
         else if(s2_receive.equals("6"))
         {
-            pos = 5;
+            pos = 4;
         }
         //*****************
         final Spinner spinner = (Spinner)findViewById(R.id.spinner);
@@ -76,17 +78,18 @@ public class Screen3Activity extends AppCompatActivity {
         }
         //여기까지
         spinner.setAdapter(adapter);
-        //******************************
+
         spinner.setSelection(pos);
-        //******************************
+
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
 
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view,
                                        int position, long id) {
-            setVisibility(spinner.getSelectedItemPosition());
-            }
+                setVisibility(spinner.getSelectedItemPosition());
+
+            }//인원 선택시 ui숨김 설정하는 함수이동
             @Override
             public void onNothingSelected(AdapterView<?> adapterView){
             }
@@ -98,37 +101,38 @@ public class Screen3Activity extends AppCompatActivity {
         //--------------------------------------------------------------------
 
     }
+    //인원 선택값에 따른 ui숨김/노출 설정
     public void setVisibility(int pos){
         TextView textView = (TextView) findViewById(textView4);
         TextView textView2 = (TextView) findViewById(textView5);
         TextView textView3 = (TextView) findViewById(textView6);
         TextView textView4 = (TextView) findViewById(textView7);
         switch(pos) {
-            case 1:
+            case 0:
                 textView.setVisibility(View.INVISIBLE);
+                textView2.setVisibility(View.INVISIBLE);
+                textView3.setVisibility(View.INVISIBLE);
+                textView4.setVisibility(View.INVISIBLE);
+                break;
+            case 1:
+                textView.setVisibility(View.VISIBLE);
                 textView2.setVisibility(View.INVISIBLE);
                 textView3.setVisibility(View.INVISIBLE);
                 textView4.setVisibility(View.INVISIBLE);
                 break;
             case 2:
                 textView.setVisibility(View.VISIBLE);
-                textView2.setVisibility(View.INVISIBLE);
+                textView2.setVisibility(View.VISIBLE);
                 textView3.setVisibility(View.INVISIBLE);
                 textView4.setVisibility(View.INVISIBLE);
                 break;
             case 3:
                 textView.setVisibility(View.VISIBLE);
                 textView2.setVisibility(View.VISIBLE);
-                textView3.setVisibility(View.INVISIBLE);
-                textView4.setVisibility(View.INVISIBLE);
-                break;
-            case 4:
-                textView.setVisibility(View.VISIBLE);
-                textView2.setVisibility(View.VISIBLE);
                 textView3.setVisibility(View.VISIBLE);
                 textView4.setVisibility(View.INVISIBLE);
                 break;
-            case 5:
+            case 4:
                 textView.setVisibility(View.VISIBLE);
                 textView2.setVisibility(View.VISIBLE);
                 textView3.setVisibility(View.VISIBLE);

@@ -7,14 +7,14 @@ import android.os.Bundle;
 /**
  * Created by Seo Sung Joon on 2017-09-11 011.
  */
-
+//어플 실행시 화면
 public class SplashActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
         try{
-            Thread.sleep(4000);
+            Thread.sleep(2000);//2초간 노출
         }catch(InterruptedException e){
             e.printStackTrace();
         }
