@@ -101,6 +101,15 @@ public class MapViewPage extends FragmentActivity implements OnMapReadyCallback,
                 Location location = new Location("");
                 location.setLatitude(place.getLatLng().latitude);
                 location.setLongitude(place.getLatLng().longitude);
+
+                //test
+                C app = (C)getApplicationContext();
+                app.setLoc(location,0);
+                app.setPlc(place,0);
+
+
+                //end
+
                 setCurrentLocation(location, place.getName().toString(), place.getAddress().toString());
             }
 
