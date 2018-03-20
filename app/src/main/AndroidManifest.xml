@@ -36,7 +36,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBBsRw3z-ayQvdL2h3vtVloNZqOWyzwnZA"/>
 
-        <activity android:name=".MapViewPage"></activity>
+        <activity android:name=".MapViewPage"/>
     </application>
 
 </manifest>
