@@ -1,1 +1,1 @@
-include ':app', ':folding-cell-1.2.1'
+include ':app'

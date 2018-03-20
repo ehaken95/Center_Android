@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        //스피너를 final로 바꿈->선택값 저장하기 위해서
+        //스피너를 final 로 바꿈->선택값 저장하기 위해서
         final Spinner spinner = (Spinner)findViewById(R.id.spinner);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(

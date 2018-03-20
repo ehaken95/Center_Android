@@ -8,7 +8,9 @@ import android.location.Location;
 import android.util.Log;
 
 import com.google.android.gms.location.places.Place;
-
+//입력된 위치값을 전역으로 저장하고
+//위치의 한글명과 좌표값을 어떤 클래스 파일에서도 접근할 수 있게
+//하기 위한 소스코드
 /**
  * Created by seojj on 2018-03-15 015.
  */
