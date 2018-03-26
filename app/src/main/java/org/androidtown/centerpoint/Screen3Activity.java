@@ -211,5 +211,9 @@ public class Screen3Activity extends AppCompatActivity {
         Intent it_1 = new Intent(getApplicationContext(),MapViewPage.class);
         startActivity(it_1);
     }
+    public void onButtonClickedResult(View v){
+        Intent it_2=new Intent(getApplicationContext(),CenterResultPage.class);
+        startActivity(it_2);
+    }
 
 }
