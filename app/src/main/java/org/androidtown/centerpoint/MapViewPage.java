@@ -81,6 +81,7 @@ public class MapViewPage extends FragmentActivity implements OnMapReadyCallback,
         Log.i(TAG,"testfirst");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_view_page);
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -105,9 +106,10 @@ public class MapViewPage extends FragmentActivity implements OnMapReadyCallback,
                 location.setLongitude(place.getLatLng().longitude);
 
                 //test---------------------------------------------------
+
                 C app = (C)getApplicationContext();
-                app.setLoc(location,0);
-                app.setPlc(place,0);
+                app.setLoc(location,app.getNum_buttonclicked());
+                app.setPlc(place,app.getNum_buttonclicked());
 
 
                 //end---------------------------------------------------
@@ -209,6 +211,8 @@ public class MapViewPage extends FragmentActivity implements OnMapReadyCallback,
         //Default Location일경우
         //에러와 함께 버튼이 눌리지 않게 해야함
         //좌표값을 3번화면으로 동시에 넘긴다.->전역으로 처리완료
+        C app = (C)getApplicationContext();
+        Log.i(TAG,"test B");
 
         if(currentMarker.getPosition().latitude==37.56 &&
                 currentMarker.getPosition().longitude==126.97)
@@ -225,6 +229,9 @@ public class MapViewPage extends FragmentActivity implements OnMapReadyCallback,
             AlertDialog dialog = builder.create();
             dialog.show();
         }else{
+            app.setIs_search(true);
+            app.setNum_textview(app.getNum_buttonclicked());//버튼위치를 불러온 후 해당 위치 텍스트뷰 설정
+            ((Screen3Activity)Screen3Activity.mContext).setTextView();//텍스트뷰 수정
             this.finish();//맵뷰 화면을 종료하고 이전 화면으로 넘어간다.
         }
 
