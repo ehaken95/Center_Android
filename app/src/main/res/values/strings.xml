@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">CenterPoint</string>
-    <string name="main_appname">중간 지점 찾기</string>
+    <string name="main_appname">너와 나의 연결 거리</string>
     <string name="main_select_person">약속을 잡을 인원수를 정해주세요.</string>
     <string name="main_set_location">위 치 설 정 !</string>
     <string name="mapview_set_other_location">다른사람 위치찾기!</string>

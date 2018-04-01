@@ -20,6 +20,7 @@ public class C extends Application{
     private boolean is_search = false;
     private int num_textview = 0;//텍스트뷰의 위치
     private int num_buttonclicked;//어떤 버튼이 눌렸는지 확인
+
     public Place getPlc(int person){
         return Plc[person];
     }

@@ -37,7 +37,7 @@
             android:value="AIzaSyBBsRw3z-ayQvdL2h3vtVloNZqOWyzwnZA" />
 
         <activity android:name=".MapViewPage" />
-        <activity android:name=".CenterResultPage"></activity>
+        <activity android:name=".CenterResultPage"/>
     </application>
 
 </manifest>

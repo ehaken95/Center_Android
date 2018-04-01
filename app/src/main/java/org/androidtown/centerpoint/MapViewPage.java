@@ -78,7 +78,6 @@ public class MapViewPage extends FragmentActivity implements OnMapReadyCallback,
     protected void onCreate(Bundle savedInstanceState) {
 
         //맵뷰
-        Log.i(TAG,"testfirst");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_view_page);
 
