@@ -5,7 +5,6 @@
     <string name="main_set_location">위 치 설 정 !</string>
     <string name="mapview_set_other_location">다른사람 위치찾기!</string>
     <string name="sc3_select_person">약속을 잡을 인원수를 정해주세요.</string>
-    <string name="sc3_testbutton">맵뷰테스트</string>
     <string name="sc3_person_1">1번 이용자</string>
     <string name="sc3_person_2">2번 이용자</string>
     <string name="sc3_person_3">3번 이용자</string>

@@ -8,6 +8,7 @@
         <item name="colorAccent">#64B5F6</item>
         <item name="colorControlHighlight">#00CC55</item>
         <item name="colorControlNormal">#9E9E9E</item>
+        <item name="windowBackground">#8AACC8</item>
     </style>
 
     <style name="SplashTheme" parent="@android:style/Theme.Light.NoTitleBar">
