@@ -1,6 +1,7 @@
 package org.androidtown.centerpoint;
 
 import android.app.ProgressDialog;
+import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -14,6 +15,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -23,19 +25,21 @@ import java.io.InputStreamReader;
 import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.DecimalFormat;
 
 public class CenterResultPage extends FragmentActivity implements OnMapReadyCallback{
     private GoogleMap googleMap = null;
     public static final int LOAD_SUCCESS = 101;
     private String GOOGLE_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=";
-    private String send_lat = "37.550102,";
-    private String send_lon = "127.074430";
+    private String send_lat = "";
+    private String send_lon = "";
     private String ext = "&language=ko&radius=";
-    private String radius = "500";
+    private String radius = "5500";
     private String ext1 = "&type=subway_station&key=";
     private String API_KEY  = "AIzaSyBBsRw3z-ayQvdL2h3vtVloNZqOWyzwnZA";
     private String REQUEST_URL = GOOGLE_URL+send_lat+send_lon+ext+radius+ext1+API_KEY;
-
+    private Double mid_lat;
+    private Double mid_lng;
     private ProgressDialog progressDialog;
     String[] jsonReceive = new String[3];
     String receiveJSON;
@@ -43,6 +47,30 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_center_result_page);
+
+        C app = (C)getApplicationContext();
+        //중간값 계산해서 JSON과 통신
+        double latsum=0.0;
+        double lngsum=0.0;
+        Location loc_tmp;
+        for(int i=0;i<app.getNum_people();i++){
+            loc_tmp = app.getLoc(i);
+            latsum += loc_tmp.getLatitude();
+            lngsum += loc_tmp.getLongitude();
+        }
+        latsum = latsum/app.getNum_people();
+        lngsum = lngsum/app.getNum_people();
+
+        mid_lat = latsum;
+        mid_lng = lngsum;
+        //중간값 계산
+        String pattern = ".######";
+        DecimalFormat def=new DecimalFormat(pattern);
+        send_lat = def.format(latsum) + ",";
+        send_lon = def.format(lngsum);
+
+
+        REQUEST_URL = GOOGLE_URL+send_lat+send_lon+ext+radius+ext1+API_KEY;
         getJSONThread getJSON = new getJSONThread();
         getJSON.start();
         try{
@@ -156,14 +184,44 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
         String [] arraysum = new String[3];
         try{
             JSONObject jsonData = new JSONObject(jsonString);
-            JSONObject jsonObject = jsonData.getJSONArray("results").getJSONObject(0);
-            name = jsonObject.getString("name");
-            lat = jsonObject.getJSONObject("geometry").getJSONObject("location").getDouble("lat");
-            lng = jsonObject.getJSONObject("geometry").getJSONObject("location").getDouble("lng");
 
-            arraysum[0]=name;
-            arraysum[1]=String.valueOf(lat);
-            arraysum[2]=String.valueOf(lng);
+            //여러개 값이 올경우 최단 거리의 지하철 선정
+            JSONArray jsonArray = jsonData.getJSONArray("results");
+            int list_cnt=jsonArray.length();
+
+            String[] getname=new String[list_cnt];
+            Double[] getlat=new Double[list_cnt];
+            Double[] getlng=new Double[list_cnt];
+            Double[] distance=new Double[list_cnt];
+            double min=0;
+            int cnt=0;
+            for(int i=0;i<list_cnt;i++){//여러개의 값이 오는것을 배열로 저장
+                JSONObject jsonSave = jsonArray.getJSONObject(i);
+                getname[i]=jsonSave.getString("name");
+                getlat[i]=jsonSave.getJSONObject("geometry").getJSONObject("location").getDouble("lat");
+                getlng[i]=jsonSave.getJSONObject("geometry").getJSONObject("location").getDouble("lng");
+                Log.i("JSON Save : ",jsonSave+"");
+                Log.i("JSON DATA : ",getname[i]+","+getlat[i]);
+            }
+            Log.i("Mid LATLNG : ",mid_lat+""+mid_lng);
+            for (int i=0;i<list_cnt;i++){//각 거리 계산
+                distance[i] = Math.sqrt((mid_lat-getlat[i])*(mid_lat-getlat[i])
+                        + (mid_lng-getlng[i])*(mid_lng-getlng[i]));
+
+                Log.i("Distance : ",getname[i]+" : "+distance[i]);
+            }
+            min = distance[0];//가장 최단거리에 위치한 지하철역을 찾는다
+            for(int i=0;i<list_cnt;i++){
+                if(distance[i]<min)
+                {
+                    min = distance[i];
+                    cnt = i;
+                }
+            }
+
+            arraysum[0]=getname[cnt];
+            arraysum[1]=String.valueOf(getlat[cnt]);
+            arraysum[2]=String.valueOf(getlng[cnt]);
 
         }catch (JSONException e){
             e.printStackTrace();

@@ -231,6 +231,7 @@ public class MapViewPage extends FragmentActivity implements OnMapReadyCallback,
             app.setIs_search(true);
             app.setNum_textview(app.getNum_buttonclicked());//버튼위치를 불러온 후 해당 위치 텍스트뷰 설정
             ((Screen3Activity)Screen3Activity.mContext).setTextView();//텍스트뷰 수정
+            app.setIs_peopleSearchComplete(app.getNum_buttonclicked());//버튼위치에 해당하는 n번째 인원의 검색완료표시
             this.finish();//맵뷰 화면을 종료하고 이전 화면으로 넘어간다.
         }
 

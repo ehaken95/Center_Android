@@ -1,8 +1,10 @@
 package org.androidtown.centerpoint;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -36,11 +38,15 @@ public class Screen3Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //pos 저장위한 전역변수
+        final C app = (C)getApplicationContext();
+
         //맵에서 텍스트뷰 쓰기 위함
         mContext=this;
 
         setContentView(R.layout.activity_screen3);
         int pos=0;
+        int save_pos=0;
         //*************
         Intent it3 = getIntent();
         String s2_receive = it3.getStringExtra("it2_sel");
@@ -65,6 +71,10 @@ public class Screen3Activity extends AppCompatActivity {
         {
             pos = 4;
         }
+        //pos는 인자값인데, 2~6까지가 배열의 인자임
+        //인덱스와 인자값을 일치시키기 위해 +2
+        save_pos=pos+2;
+        app.setNum_people(save_pos);
         //*****************
         final Spinner spinner = (Spinner)findViewById(R.id.spinner);
 
@@ -93,6 +103,8 @@ public class Screen3Activity extends AppCompatActivity {
         spinner.setAdapter(adapter);
 
         spinner.setSelection(pos);
+        save_pos=pos+2;
+        app.setNum_people(save_pos);
 
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
@@ -101,8 +113,9 @@ public class Screen3Activity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view,
                                        int position, long id) {
                 setVisibility(spinner.getSelectedItemPosition());
-
-            }//인원 선택시 ui숨김 설정하는 함수이동
+                int tmp_save_pos=spinner.getSelectedItemPosition()+2;
+                app.setNum_people(tmp_save_pos);
+            }//인원 선택시 ui숨김 설정하는 함수이동 및 전역으로 인원수 설정
             @Override
             public void onNothingSelected(AdapterView<?> adapterView){
             }
@@ -195,8 +208,31 @@ public class Screen3Activity extends AppCompatActivity {
         startActivity(it_1);
     }
     public void onButtonClickedResult(View v){
-        Intent it_2=new Intent(getApplicationContext(),CenterResultPage.class);
-        startActivity(it_2);
+        C app = (C)getApplicationContext();
+        int isSafeToGOResult = 1;//0이면 안됨.1이면 됨
+        for(int i=0;i<app.getNum_people();i++){
+            if(!app.getIs_peopleSearchComplete(i)){//가면 안될경우
+                 isSafeToGOResult=0;
+            }
+        }
+        if(isSafeToGOResult==0)
+        {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("안내");
+            builder.setMessage("인원별 목적지를 전부 설정해 주세요.");
+            builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }else{//여기서 결과화면으로 넘어가야함
+            Intent it_2=new Intent(getApplicationContext(),CenterResultPage.class);
+            startActivity(it_2);
+        }
+
     }
 
 }

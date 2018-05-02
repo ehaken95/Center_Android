@@ -20,7 +20,8 @@ public class C extends Application{
     private boolean is_search = false;
     private int num_textview = 0;//텍스트뷰의 위치
     private int num_buttonclicked;//어떤 버튼이 눌렸는지 확인
-
+    private int num_people;//몇명의 사람인지 확인
+    private boolean[] is_peopleSearchComplete = {false,false,false,false,false,false};
     public Place getPlc(int person){
         return Plc[person];
     }
@@ -57,6 +58,19 @@ public class C extends Application{
         return num_buttonclicked;
     }
 
+    public void setNum_people(int num_people){
+        this.num_people = num_people;
+    }
+    public int getNum_people(){
+        return num_people;
+    }
+
+    public void setIs_peopleSearchComplete(int position) {
+        this.is_peopleSearchComplete[position] = true;
+    }
+    public boolean getIs_peopleSearchComplete(int position){
+        return is_peopleSearchComplete[position];
+    }
 
     @Override
     public void onCreate(){
