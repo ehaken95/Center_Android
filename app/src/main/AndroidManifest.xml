@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
+        android:name=".C"
         android:allowBackup="true"
         android:background="#FFFFFF"
         android:icon="@mipmap/ic_launcher"
@@ -33,9 +34,10 @@
             android:value="35d22b3f20255ee7794364ed4ca45a88 " />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBBsRw3z-ayQvdL2h3vtVloNZqOWyzwnZA"/>
+            android:value="AIzaSyBBsRw3z-ayQvdL2h3vtVloNZqOWyzwnZA" />
 
-        <activity android:name=".MapViewPage"></activity>
+        <activity android:name=".MapViewPage" />
+        <activity android:name=".CenterResultPage"/>
     </application>
 
 </manifest>

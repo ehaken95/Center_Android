@@ -1,6 +1,7 @@
 package org.androidtown.centerpoint;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
@@ -9,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 
@@ -76,9 +78,9 @@ public class MapViewPage extends FragmentActivity implements OnMapReadyCallback,
     protected void onCreate(Bundle savedInstanceState) {
 
         //맵뷰
-        Log.i(TAG,"testfirst");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_view_page);
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -101,6 +103,16 @@ public class MapViewPage extends FragmentActivity implements OnMapReadyCallback,
                 Location location = new Location("");
                 location.setLatitude(place.getLatLng().latitude);
                 location.setLongitude(place.getLatLng().longitude);
+
+                //test---------------------------------------------------
+
+                C app = (C)getApplicationContext();
+                app.setLoc(location,app.getNum_buttonclicked());
+                app.setPlc(place,app.getNum_buttonclicked());
+
+
+                //end---------------------------------------------------
+
                 setCurrentLocation(location, place.getName().toString(), place.getAddress().toString());
             }
 
@@ -194,12 +206,36 @@ public class MapViewPage extends FragmentActivity implements OnMapReadyCallback,
 
     }
     public void onButtonClicked(View v) {
-        //맵뷰 화면에서 하단 버튼 클릭 시, 만약 위치값이 null이거나
+        //맵뷰 화면에서 하단 버튼 클릭 시, 만약 위치값이
         //Default Location일경우
         //에러와 함께 버튼이 눌리지 않게 해야함
+        //좌표값을 3번화면으로 동시에 넘긴다.->전역으로 처리완료
+        C app = (C)getApplicationContext();
+        Log.i(TAG,"test B");
 
-        //좌표값을 3번화면으로 동시에 넘긴다.
-        this.finish();//맵뷰 화면을 종료하고 이전 화면으로 넘어간다.
+        if(currentMarker.getPosition().latitude==37.56 &&
+                currentMarker.getPosition().longitude==126.97)
+        {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("안내");
+            builder.setMessage("정확한 위치를 검색해 주세요.");
+            builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }else{
+            app.setIs_search(true);
+            app.setNum_textview(app.getNum_buttonclicked());//버튼위치를 불러온 후 해당 위치 텍스트뷰 설정
+            ((Screen3Activity)Screen3Activity.mContext).setTextView();//텍스트뷰 수정
+            app.setIs_peopleSearchComplete(app.getNum_buttonclicked());//버튼위치에 해당하는 n번째 인원의 검색완료표시
+            this.finish();//맵뷰 화면을 종료하고 이전 화면으로 넘어간다.
+        }
+
+
     }
 
 
