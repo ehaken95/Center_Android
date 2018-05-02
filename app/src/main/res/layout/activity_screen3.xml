@@ -11,7 +11,10 @@
         android:id="@+id/line1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="8dp"
         android:layout_weight="1"
         android:background="@drawable/textview_round"
         android:orientation="horizontal"
@@ -43,7 +46,10 @@
         android:id="@+id/line2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
         android:layout_weight="1"
         android:background="@drawable/textview_round"
         android:orientation="horizontal"
@@ -53,8 +59,9 @@
 
         <ImageView
             android:id="@+id/imageView1"
-            android:layout_width="50dp"
+            android:layout_width="25dp"
             android:layout_height="match_parent"
+            android:padding="2dp"
             android:layout_weight="1"
             android:src="@drawable/_1people" />
 
@@ -71,11 +78,12 @@
 
         <ImageButton
             android:id="@+id/button1"
-            android:layout_width="50dp"
+            android:layout_width="25dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#00000000"
             android:onClick="onButtonClicked"
+            android:padding="12dp"
             android:scaleType="centerInside"
             android:src="@drawable/ico_search"
             android:visibility="visible" />
@@ -86,7 +94,10 @@
         android:id="@+id/line3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
         android:layout_weight="1"
         android:background="@drawable/textview_round"
         android:orientation="horizontal"
@@ -96,9 +107,10 @@
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="50dp"
+            android:layout_width="25dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:padding="2dp"
             android:src="@drawable/_2people" />
 
         <TextView
@@ -114,11 +126,12 @@
 
         <ImageButton
             android:id="@+id/button2"
-            android:layout_width="50dp"
+            android:layout_width="25dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#00000000"
             android:onClick="onButtonClicked"
+            android:padding="12dp"
             android:scaleType="centerInside"
             android:src="@drawable/ico_search"
             android:visibility="visible" />
@@ -129,7 +142,10 @@
         android:id="@+id/line4"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
         android:layout_weight="1"
         android:background="@drawable/textview_round"
         android:orientation="horizontal"
@@ -138,9 +154,10 @@
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="50dp"
+            android:layout_width="25dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:padding="2dp"
             android:src="@drawable/_3people" />
 
         <TextView
@@ -156,11 +173,12 @@
 
         <ImageButton
             android:id="@+id/button3"
-            android:layout_width="50dp"
+            android:layout_width="25dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#00000000"
             android:onClick="onButtonClicked"
+            android:padding="12dp"
             android:scaleType="centerInside"
             android:src="@drawable/ico_search"
             android:visibility="visible" />
@@ -171,7 +189,10 @@
         android:id="@+id/line5"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
         android:layout_weight="1"
         android:background="@drawable/textview_round"
         android:orientation="horizontal"
@@ -180,9 +201,10 @@
 
         <ImageView
             android:id="@+id/imageView4"
-            android:layout_width="50dp"
+            android:layout_width="25dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:padding="2dp"
             android:src="@drawable/_4people" />
 
         <TextView
@@ -198,11 +220,12 @@
 
         <ImageButton
             android:id="@+id/button4"
-            android:layout_width="50dp"
+            android:layout_width="25dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#00000000"
             android:onClick="onButtonClicked"
+            android:padding="12dp"
             android:scaleType="centerInside"
             android:src="@drawable/ico_search"
             android:visibility="visible" />
@@ -213,7 +236,10 @@
         android:id="@+id/line6"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
         android:layout_weight="1"
         android:background="@drawable/textview_round"
         android:orientation="horizontal"
@@ -222,8 +248,9 @@
 
         <ImageView
             android:id="@+id/imageView5"
-            android:layout_width="50dp"
+            android:layout_width="25dp"
             android:layout_height="match_parent"
+            android:padding="2dp"
             android:layout_weight="1"
             android:src="@drawable/_5people" />
 
@@ -240,11 +267,12 @@
 
         <ImageButton
             android:id="@+id/button5"
-            android:layout_width="50dp"
+            android:layout_width="25dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#00000000"
             android:onClick="onButtonClicked"
+            android:padding="12dp"
             android:scaleType="centerInside"
             android:src="@drawable/ico_search"
             android:visibility="visible" />
@@ -255,7 +283,10 @@
         android:id="@+id/line7"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
         android:layout_weight="1"
         android:background="@drawable/textview_round"
         android:orientation="horizontal"
@@ -264,8 +295,9 @@
 
         <ImageView
             android:id="@+id/imageView6"
-            android:layout_width="50dp"
+            android:layout_width="25dp"
             android:layout_height="match_parent"
+            android:padding="2dp"
             android:layout_weight="1"
             android:src="@drawable/_6people" />
 
@@ -282,11 +314,12 @@
 
         <ImageButton
             android:id="@+id/button6"
-            android:layout_width="50dp"
+            android:layout_width="25dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#00000000"
             android:onClick="onButtonClicked"
+            android:padding="12dp"
             android:scaleType="centerInside"
             android:src="@drawable/ico_search"
             android:visibility="visible" />
@@ -297,7 +330,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:layout_margin="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
         android:gravity="center_horizontal|center_vertical"
         android:orientation="horizontal">
 
