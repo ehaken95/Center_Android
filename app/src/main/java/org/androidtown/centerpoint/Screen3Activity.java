@@ -7,18 +7,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.lang.reflect.Field;
 
+import static org.androidtown.centerpoint.R.id.line4;
+import static org.androidtown.centerpoint.R.id.line5;
+import static org.androidtown.centerpoint.R.id.line6;
+import static org.androidtown.centerpoint.R.id.line7;
 import static org.androidtown.centerpoint.R.id.textView2;
 import static org.androidtown.centerpoint.R.id.textView3;
 import static org.androidtown.centerpoint.R.id.textView4;
 import static org.androidtown.centerpoint.R.id.textView5;
 import static org.androidtown.centerpoint.R.id.textView6;
 import static org.androidtown.centerpoint.R.id.textView7;
+
 
 public class Screen3Activity extends AppCompatActivity {
 
@@ -110,64 +115,42 @@ public class Screen3Activity extends AppCompatActivity {
     }
     //인원 선택값에 따른 ui숨김/노출 설정
     public void setVisibility(int pos){
-        TextView textView = (TextView) findViewById(textView4);
-        TextView textView2 = (TextView) findViewById(textView5);
-        TextView textView3 = (TextView) findViewById(textView6);
-        TextView textView4 = (TextView) findViewById(textView7);
-        Button button = (Button)findViewById(R.id.button3);
-        Button button2 = (Button)findViewById(R.id.button4);
-        Button button3 = (Button)findViewById(R.id.button5);
-        Button button4 = (Button)findViewById(R.id.button6);
+
+        LinearLayout linear1 = (LinearLayout)findViewById(line4);
+        LinearLayout linear2 = (LinearLayout)findViewById(line5);
+        LinearLayout linear3 = (LinearLayout)findViewById(line6);
+        LinearLayout linear4 = (LinearLayout)findViewById(line7);
+
         switch(pos) {
             case 0:
-                textView.setVisibility(View.INVISIBLE);
-                textView2.setVisibility(View.INVISIBLE);
-                textView3.setVisibility(View.INVISIBLE);
-                textView4.setVisibility(View.INVISIBLE);
-                button.setVisibility(View.INVISIBLE);
-                button2.setVisibility(View.INVISIBLE);
-                button3.setVisibility(View.INVISIBLE);
-                button4.setVisibility(View.INVISIBLE);
+                linear1.setVisibility(View.INVISIBLE);
+                linear2.setVisibility(View.INVISIBLE);
+                linear3.setVisibility(View.INVISIBLE);
+                linear4.setVisibility(View.INVISIBLE);
                 break;
             case 1:
-                textView.setVisibility(View.VISIBLE);
-                textView2.setVisibility(View.INVISIBLE);
-                textView3.setVisibility(View.INVISIBLE);
-                textView4.setVisibility(View.INVISIBLE);
-                button.setVisibility(View.VISIBLE);
-                button2.setVisibility(View.INVISIBLE);
-                button3.setVisibility(View.INVISIBLE);
-                button4.setVisibility(View.INVISIBLE);
+                linear1.setVisibility(View.VISIBLE);
+                linear2.setVisibility(View.INVISIBLE);
+                linear3.setVisibility(View.INVISIBLE);
+                linear4.setVisibility(View.INVISIBLE);
                 break;
             case 2:
-                textView.setVisibility(View.VISIBLE);
-                textView2.setVisibility(View.VISIBLE);
-                textView3.setVisibility(View.INVISIBLE);
-                textView4.setVisibility(View.INVISIBLE);
-                button.setVisibility(View.VISIBLE);
-                button2.setVisibility(View.VISIBLE);
-                button3.setVisibility(View.INVISIBLE);
-                button4.setVisibility(View.INVISIBLE);
+                linear1.setVisibility(View.VISIBLE);
+                linear2.setVisibility(View.VISIBLE);
+                linear3.setVisibility(View.INVISIBLE);
+                linear4.setVisibility(View.INVISIBLE);
                 break;
             case 3:
-                textView.setVisibility(View.VISIBLE);
-                textView2.setVisibility(View.VISIBLE);
-                textView3.setVisibility(View.VISIBLE);
-                textView4.setVisibility(View.INVISIBLE);
-                button.setVisibility(View.VISIBLE);
-                button2.setVisibility(View.VISIBLE);
-                button3.setVisibility(View.VISIBLE);
-                button4.setVisibility(View.INVISIBLE);
+                linear1.setVisibility(View.VISIBLE);
+                linear2.setVisibility(View.VISIBLE);
+                linear3.setVisibility(View.VISIBLE);
+                linear4.setVisibility(View.INVISIBLE);
                 break;
             case 4:
-                textView.setVisibility(View.VISIBLE);
-                textView2.setVisibility(View.VISIBLE);
-                textView3.setVisibility(View.VISIBLE);
-                textView4.setVisibility(View.VISIBLE);
-                button.setVisibility(View.VISIBLE);
-                button2.setVisibility(View.VISIBLE);
-                button3.setVisibility(View.VISIBLE);
-                button4.setVisibility(View.VISIBLE);
+                linear1.setVisibility(View.VISIBLE);
+                linear2.setVisibility(View.VISIBLE);
+                linear3.setVisibility(View.VISIBLE);
+                linear4.setVisibility(View.VISIBLE);
                 break;
         }
     }
