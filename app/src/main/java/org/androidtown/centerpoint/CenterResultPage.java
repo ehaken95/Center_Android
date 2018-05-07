@@ -1,17 +1,22 @@
 package org.androidtown.centerpoint;
 
 import android.app.ProgressDialog;
+import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -26,6 +31,17 @@ import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.DecimalFormat;
+
+import static org.androidtown.centerpoint.R.id.line4;
+import static org.androidtown.centerpoint.R.id.line5;
+import static org.androidtown.centerpoint.R.id.line6;
+import static org.androidtown.centerpoint.R.id.line7;
+import static org.androidtown.centerpoint.R.id.textView2;
+import static org.androidtown.centerpoint.R.id.textView3;
+import static org.androidtown.centerpoint.R.id.textView4;
+import static org.androidtown.centerpoint.R.id.textView5;
+import static org.androidtown.centerpoint.R.id.textView6;
+import static org.androidtown.centerpoint.R.id.textView7;
 
 public class CenterResultPage extends FragmentActivity implements OnMapReadyCallback{
     private GoogleMap googleMap = null;
@@ -49,6 +65,9 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
         setContentView(R.layout.activity_center_result_page);
 
         C app = (C)getApplicationContext();
+        setVisibility(app.getNum_people());//리스트뷰 출력
+        setTextView();
+
         //중간값 계산해서 JSON과 통신
         double latsum=0.0;
         double lngsum=0.0;
@@ -83,6 +102,78 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
                 .findFragmentById(R.id.resultmap);
         mapFragment.getMapAsync(this);
 
+    }
+
+    public void setVisibility(int pos){
+        pos-=2;
+        LinearLayout linear1 = (LinearLayout)findViewById(line4);
+        LinearLayout linear2 = (LinearLayout)findViewById(line5);
+        LinearLayout linear3 = (LinearLayout)findViewById(line6);
+        LinearLayout linear4 = (LinearLayout)findViewById(line7);
+
+        switch(pos) {
+            case 0:
+                linear1.setVisibility(View.GONE);
+                linear2.setVisibility(View.GONE);
+                linear3.setVisibility(View.GONE);
+                linear4.setVisibility(View.GONE);
+                break;
+            case 1:
+                linear1.setVisibility(View.VISIBLE);
+                linear2.setVisibility(View.GONE);
+                linear3.setVisibility(View.GONE);
+                linear4.setVisibility(View.GONE);
+                break;
+            case 2:
+                linear1.setVisibility(View.VISIBLE);
+                linear2.setVisibility(View.VISIBLE);
+                linear3.setVisibility(View.GONE);
+                linear4.setVisibility(View.GONE);
+                break;
+            case 3:
+                linear1.setVisibility(View.VISIBLE);
+                linear2.setVisibility(View.VISIBLE);
+                linear3.setVisibility(View.VISIBLE);
+                linear4.setVisibility(View.GONE);
+                break;
+            case 4:
+                linear1.setVisibility(View.VISIBLE);
+                linear2.setVisibility(View.VISIBLE);
+                linear3.setVisibility(View.VISIBLE);
+                linear4.setVisibility(View.VISIBLE);
+                break;
+        }
+    }
+    public void setTextView(){
+
+        TextView textViewfir = (TextView) findViewById(textView2);
+        TextView textViewsec = (TextView) findViewById(textView3);
+        TextView textView = (TextView) findViewById(textView4);
+        TextView textView2 = (TextView) findViewById(textView5);
+        TextView textView3 = (TextView) findViewById(textView6);
+        TextView textView4 = (TextView) findViewById(textView7);
+        C app = (C)getApplicationContext();
+
+        for(int i=0; i<app.getNum_people();i++){
+            switch (i){
+                case 0:textViewfir.setText(app.getPlc(0).getName());
+                    break;
+                case 1:textViewsec.setText(app.getPlc(1).getName());
+                    break;
+                case 2:textView.setText(app.getPlc(2).getName());
+                    break;
+                case 3:textView2.setText(app.getPlc(3).getName());
+                    break;
+                case 4:textView3.setText(app.getPlc(4).getName());
+                    break;
+                case 5:textView4.setText(app.getPlc(5).getName());
+                    break;
+            }
+        }
+    }
+
+    public void onButtonClicked(View v){
+        //공유링크 넘기는 걸로 구현할 것임
     }
 
     private final MyHandler mHandler = new MyHandler(this);
@@ -122,6 +213,7 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
         Double lng = Double.parseDouble(jsonReceive[2]);
         LatLng loc = new LatLng(lat,lng);
         this.googleMap.addMarker(new MarkerOptions()
+                .icon(BitmapDescriptorFactory.fromBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.mid_icon)))
                 .position(loc)
                 .title(jsonReceive[0]));
         this.googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc,15));
