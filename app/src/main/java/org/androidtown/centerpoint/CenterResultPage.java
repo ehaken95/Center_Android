@@ -17,8 +17,6 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.Polyline;
-import com.google.android.gms.maps.model.PolylineOptions;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -216,28 +214,6 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
                 .position(loc)
                 .title(jsonReceive[0]));
         this.googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc,15));
-
-        //지하철 선긋기
-        C app = (C)getApplicationContext();
-        for(int i=0;i<app.getNum_people();i++)
-            this.googleMap.addMarker(new MarkerOptions()
-                         .position(new LatLng(app.getLoc(0).getLatitude(),app.getLoc(0).getLongitude())));
-        this.googleMap.addMarker(new MarkerOptions()
-                .position(new LatLng(app.getLoc(1).getLatitude(),app.getLoc(1).getLongitude())));
-        this.googleMap.addMarker(new MarkerOptions()
-                .position(new LatLng(app.getLoc(2).getLatitude(),app.getLoc(2).getLongitude())));
-        PolylineOptions linef = new PolylineOptions()
-                .add(loc)
-                .add(new LatLng(app.getLoc(0).getLatitude(),app.getLoc(0).getLongitude()));
-        PolylineOptions lines = new PolylineOptions()
-                .add(loc)
-                .add(new LatLng(app.getLoc(1).getLatitude(),app.getLoc(1).getLongitude()));
-        PolylineOptions linet = new PolylineOptions()
-                .add(loc)
-                .add(new LatLng(app.getLoc(2).getLatitude(),app.getLoc(2).getLongitude()));
-        Polyline polyline = googleMap.addPolyline(linef);
-        Polyline polyline1 = googleMap.addPolyline(lines);
-        Polyline polyline2 = googleMap.addPolyline(linet);
     }
 
     public class getJSONThread extends Thread{
