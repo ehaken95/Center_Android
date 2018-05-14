@@ -1,12 +1,16 @@
 package org.androidtown.centerpoint;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -27,6 +31,17 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.DecimalFormat;
 
+import static org.androidtown.centerpoint.R.id.line4;
+import static org.androidtown.centerpoint.R.id.line5;
+import static org.androidtown.centerpoint.R.id.line6;
+import static org.androidtown.centerpoint.R.id.line7;
+import static org.androidtown.centerpoint.R.id.textView2;
+import static org.androidtown.centerpoint.R.id.textView3;
+import static org.androidtown.centerpoint.R.id.textView4;
+import static org.androidtown.centerpoint.R.id.textView5;
+import static org.androidtown.centerpoint.R.id.textView6;
+import static org.androidtown.centerpoint.R.id.textView7;
+
 public class CenterResultPage extends FragmentActivity implements OnMapReadyCallback{
     private GoogleMap googleMap = null;
     public static final int LOAD_SUCCESS = 101;
@@ -34,13 +49,23 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
     private String send_lat = "";
     private String send_lon = "";
     private String ext = "&language=ko&radius=";
-    private String radius = "5500";
+    private String radius = "10000";
     private String ext1 = "&type=subway_station&key=";
     private String API_KEY  = "AIzaSyBBsRw3z-ayQvdL2h3vtVloNZqOWyzwnZA";
     private String REQUEST_URL = GOOGLE_URL+send_lat+send_lon+ext+radius+ext1+API_KEY;
     private Double mid_lat;
     private Double mid_lng;
     private ProgressDialog progressDialog;
+
+    private String Naver_URL = "http://m.map.naver.com/route.nhn?menu=route";
+    private String Naver_sname="&sname=";
+    private String Naver_sx="&sx=";
+    private String Naver_sy="&sy=";
+    private String Naver_ename="&ename=";
+    private String Naver_ex="&ex=";
+    private String Naver_ey="&ey=";
+    private String Naver_ext="&pathType=1&showMap=true";
+
     String[] jsonReceive = new String[3];
     String receiveJSON;
     @Override
@@ -49,6 +74,9 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
         setContentView(R.layout.activity_center_result_page);
 
         C app = (C)getApplicationContext();
+        setVisibility(app.getNum_people());//리스트뷰 출력
+        setTextView();
+
         //중간값 계산해서 JSON과 통신
         double latsum=0.0;
         double lngsum=0.0;
@@ -84,6 +112,168 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
         mapFragment.getMapAsync(this);
 
     }
+
+    public void setVisibility(int pos){
+        pos-=2;
+        LinearLayout linear1 = (LinearLayout)findViewById(line4);
+        LinearLayout linear2 = (LinearLayout)findViewById(line5);
+        LinearLayout linear3 = (LinearLayout)findViewById(line6);
+        LinearLayout linear4 = (LinearLayout)findViewById(line7);
+
+        switch(pos) {
+            case 0:
+                linear1.setVisibility(View.GONE);
+                linear2.setVisibility(View.GONE);
+                linear3.setVisibility(View.GONE);
+                linear4.setVisibility(View.GONE);
+                break;
+            case 1:
+                linear1.setVisibility(View.VISIBLE);
+                linear2.setVisibility(View.GONE);
+                linear3.setVisibility(View.GONE);
+                linear4.setVisibility(View.GONE);
+                break;
+            case 2:
+                linear1.setVisibility(View.VISIBLE);
+                linear2.setVisibility(View.VISIBLE);
+                linear3.setVisibility(View.GONE);
+                linear4.setVisibility(View.GONE);
+                break;
+            case 3:
+                linear1.setVisibility(View.VISIBLE);
+                linear2.setVisibility(View.VISIBLE);
+                linear3.setVisibility(View.VISIBLE);
+                linear4.setVisibility(View.GONE);
+                break;
+            case 4:
+                linear1.setVisibility(View.VISIBLE);
+                linear2.setVisibility(View.VISIBLE);
+                linear3.setVisibility(View.VISIBLE);
+                linear4.setVisibility(View.VISIBLE);
+                break;
+        }
+    }
+    public void setTextView(){
+
+        TextView textViewfir = (TextView) findViewById(textView2);
+        TextView textViewsec = (TextView) findViewById(textView3);
+        TextView textView = (TextView) findViewById(textView4);
+        TextView textView2 = (TextView) findViewById(textView5);
+        TextView textView3 = (TextView) findViewById(textView6);
+        TextView textView4 = (TextView) findViewById(textView7);
+        C app = (C)getApplicationContext();
+
+        for(int i=0; i<app.getNum_people();i++){
+            switch (i){
+                case 0:textViewfir.setText(app.getPlc(0).getName());
+                    break;
+                case 1:textViewsec.setText(app.getPlc(1).getName());
+                    break;
+                case 2:textView.setText(app.getPlc(2).getName());
+                    break;
+                case 3:textView2.setText(app.getPlc(3).getName());
+                    break;
+                case 4:textView3.setText(app.getPlc(4).getName());
+                    break;
+                case 5:textView4.setText(app.getPlc(5).getName());
+                    break;
+            }
+        }
+    }
+
+    public void onButtonClicked1(View v){
+        C app = (C)getApplicationContext();
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+
+        //set text message
+        String text="[너와 나의 연결 거리]\n" +app.getPlc(0).getName()+" -> "+jsonReceive[0] + "의 길찾기 결과입니다.\n";
+        Naver_sname += app.getPlc(0).getName();
+        Naver_sy+=app.getLoc(0).getLatitude();
+        Naver_sx+=app.getLoc(0).getLongitude();
+        text+=Naver_URL+Naver_sname+Naver_sx+Naver_sy+Naver_ename+Naver_ex+Naver_ey+Naver_ext;
+        intent.putExtra(Intent.EXTRA_TEXT,text);
+        Intent chooser=Intent.createChooser(intent,"친구에게 공유하기");
+        startActivity(chooser);
+
+    }
+    public void onButtonClicked2(View v){
+        C app = (C)getApplicationContext();
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+
+        //set text message
+        String text="[너와 나의 연결 거리]\n" +app.getPlc(1).getName()+" -> "+jsonReceive[0] + "의 길찾기 결과입니다.\n";
+        Naver_sname += app.getPlc(1).getName();
+        Naver_sy+=app.getLoc(1).getLatitude();
+        Naver_sx+=app.getLoc(1).getLongitude();
+        text+=Naver_URL+Naver_sname+Naver_sx+Naver_sy+Naver_ename+Naver_ex+Naver_ey+Naver_ext;
+        intent.putExtra(Intent.EXTRA_TEXT,text);
+        Intent chooser=Intent.createChooser(intent,"친구에게 공유하기");
+        startActivity(chooser);
+
+    }
+    public void onButtonClicked3(View v){
+        C app = (C)getApplicationContext();
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+
+        //set text message
+        String text="[너와 나의 연결 거리]\n" +app.getPlc(2).getName()+" -> "+jsonReceive[0] + "의 길찾기 결과입니다.\n";
+        Naver_sname += app.getPlc(2).getName();
+        Naver_sy+=app.getLoc(2).getLatitude();
+        Naver_sx+=app.getLoc(2).getLongitude();
+        text+=Naver_URL+Naver_sname+Naver_sx+Naver_sy+Naver_ename+Naver_ex+Naver_ey+Naver_ext;
+        intent.putExtra(Intent.EXTRA_TEXT,text);
+        Intent chooser=Intent.createChooser(intent,"친구에게 공유하기");
+        startActivity(chooser);
+    }
+    public void onButtonClicked4(View v){
+        C app = (C)getApplicationContext();
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+
+        //set text message
+        String text="[너와 나의 연결 거리]\n" +app.getPlc(3).getName()+" -> "+jsonReceive[0] + "의 길찾기 결과입니다.\n";
+        Naver_sname += app.getPlc(3).getName();
+        Naver_sy+=app.getLoc(3).getLatitude();
+        Naver_sx+=app.getLoc(3).getLongitude();
+        text+=Naver_URL+Naver_sname+Naver_sx+Naver_sy+Naver_ename+Naver_ex+Naver_ey+Naver_ext;
+        intent.putExtra(Intent.EXTRA_TEXT,text);
+        Intent chooser=Intent.createChooser(intent,"친구에게 공유하기");
+        startActivity(chooser);
+    }
+    public void onButtonClicked5(View v){
+        C app = (C)getApplicationContext();
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+
+        //set text message
+        String text="[너와 나의 연결 거리]\n" +app.getPlc(4).getName()+" -> "+jsonReceive[0] + "의 길찾기 결과입니다.\n";
+        Naver_sname += app.getPlc(4).getName();
+        Naver_sy+=app.getLoc(4).getLatitude();
+        Naver_sx+=app.getLoc(4).getLongitude();
+        text+=Naver_URL+Naver_sname+Naver_sx+Naver_sy+Naver_ename+Naver_ex+Naver_ey+Naver_ext;
+        intent.putExtra(Intent.EXTRA_TEXT,text);
+        Intent chooser=Intent.createChooser(intent,"친구에게 공유하기");
+        startActivity(chooser);
+    }
+    public void onButtonClicked6(View v){
+        C app = (C)getApplicationContext();
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+
+        //set text message
+        String text="[너와 나의 연결 거리]\n" +app.getPlc(5).getName()+" -> "+jsonReceive[0] + "의 길찾기 결과입니다.\n";
+        Naver_sname += app.getPlc(5).getName();
+        Naver_sy+=app.getLoc(5).getLatitude();
+        Naver_sx+=app.getLoc(5).getLongitude();
+        text+=Naver_URL+Naver_sname+Naver_sx+Naver_sy+Naver_ename+Naver_ex+Naver_ey+Naver_ext;
+        intent.putExtra(Intent.EXTRA_TEXT,text);
+        Intent chooser=Intent.createChooser(intent,"친구에게 공유하기");
+        startActivity(chooser);
+    }
+
 
     private final MyHandler mHandler = new MyHandler(this);
 
@@ -230,6 +420,9 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
         jsonReceive[1]=arraysum[1];
         jsonReceive[2]=arraysum[2];
 
+        Naver_ename += jsonReceive[0];
+        Naver_ey += jsonReceive[1];
+        Naver_ex += jsonReceive[2];
     }
 
 

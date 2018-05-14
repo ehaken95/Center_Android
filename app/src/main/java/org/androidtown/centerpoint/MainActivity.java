@@ -1,5 +1,6 @@
 package org.androidtown.centerpoint;
 
+import android.app.ActionBar;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,7 +15,7 @@ import android.widget.TextView;
 import java.lang.reflect.Field;
 
 /**
- * Created by Seo Sung Joon on 2017-09-11 011.
+ * Created by Seo Sung Joon on 2018-02-11 011.
  */
 
 
@@ -25,6 +26,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //타이틀바 중앙 정렬
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.custom_titlebar);
 
         setContentView(R.layout.activity_main);
 

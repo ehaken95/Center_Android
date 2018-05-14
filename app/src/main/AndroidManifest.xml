@@ -28,10 +28,7 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".Screen3Activity" />
-
-        <meta-data
-            android:name="com.kakao.sdk.AppKey"
-            android:value="35d22b3f20255ee7794364ed4ca45a88 " />
+        
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBBsRw3z-ayQvdL2h3vtVloNZqOWyzwnZA" />
