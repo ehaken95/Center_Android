@@ -1,6 +1,7 @@
 package org.androidtown.centerpoint;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
@@ -48,13 +49,23 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
     private String send_lat = "";
     private String send_lon = "";
     private String ext = "&language=ko&radius=";
-    private String radius = "5500";
+    private String radius = "10000";
     private String ext1 = "&type=subway_station&key=";
     private String API_KEY  = "AIzaSyBBsRw3z-ayQvdL2h3vtVloNZqOWyzwnZA";
     private String REQUEST_URL = GOOGLE_URL+send_lat+send_lon+ext+radius+ext1+API_KEY;
     private Double mid_lat;
     private Double mid_lng;
     private ProgressDialog progressDialog;
+
+    private String Naver_URL = "http://m.map.naver.com/route.nhn?menu=route";
+    private String Naver_sname="&sname=";
+    private String Naver_sx="&sx=";
+    private String Naver_sy="&sy=";
+    private String Naver_ename="&ename=";
+    private String Naver_ex="&ex=";
+    private String Naver_ey="&ey=";
+    private String Naver_ext="&pathType=1&showMap=true";
+
     String[] jsonReceive = new String[3];
     String receiveJSON;
     @Override
@@ -170,9 +181,99 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
         }
     }
 
-    public void onButtonClicked(View v){
-        //공유링크 넘기는 걸로 구현할 것임
+    public void onButtonClicked1(View v){
+        C app = (C)getApplicationContext();
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+
+        //set text message
+        String text="[너와 나의 연결 거리]\n" +app.getPlc(0).getName()+" -> "+jsonReceive[0] + "의 길찾기 결과입니다.\n";
+        Naver_sname += app.getPlc(0).getName();
+        Naver_sy+=app.getLoc(0).getLatitude();
+        Naver_sx+=app.getLoc(0).getLongitude();
+        text+=Naver_URL+Naver_sname+Naver_sx+Naver_sy+Naver_ename+Naver_ex+Naver_ey+Naver_ext;
+        intent.putExtra(Intent.EXTRA_TEXT,text);
+        Intent chooser=Intent.createChooser(intent,"친구에게 공유하기");
+        startActivity(chooser);
+
     }
+    public void onButtonClicked2(View v){
+        C app = (C)getApplicationContext();
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+
+        //set text message
+        String text="[너와 나의 연결 거리]\n" +app.getPlc(1).getName()+" -> "+jsonReceive[0] + "의 길찾기 결과입니다.\n";
+        Naver_sname += app.getPlc(1).getName();
+        Naver_sy+=app.getLoc(1).getLatitude();
+        Naver_sx+=app.getLoc(1).getLongitude();
+        text+=Naver_URL+Naver_sname+Naver_sx+Naver_sy+Naver_ename+Naver_ex+Naver_ey+Naver_ext;
+        intent.putExtra(Intent.EXTRA_TEXT,text);
+        Intent chooser=Intent.createChooser(intent,"친구에게 공유하기");
+        startActivity(chooser);
+
+    }
+    public void onButtonClicked3(View v){
+        C app = (C)getApplicationContext();
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+
+        //set text message
+        String text="[너와 나의 연결 거리]\n" +app.getPlc(2).getName()+" -> "+jsonReceive[0] + "의 길찾기 결과입니다.\n";
+        Naver_sname += app.getPlc(2).getName();
+        Naver_sy+=app.getLoc(2).getLatitude();
+        Naver_sx+=app.getLoc(2).getLongitude();
+        text+=Naver_URL+Naver_sname+Naver_sx+Naver_sy+Naver_ename+Naver_ex+Naver_ey+Naver_ext;
+        intent.putExtra(Intent.EXTRA_TEXT,text);
+        Intent chooser=Intent.createChooser(intent,"친구에게 공유하기");
+        startActivity(chooser);
+    }
+    public void onButtonClicked4(View v){
+        C app = (C)getApplicationContext();
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+
+        //set text message
+        String text="[너와 나의 연결 거리]\n" +app.getPlc(3).getName()+" -> "+jsonReceive[0] + "의 길찾기 결과입니다.\n";
+        Naver_sname += app.getPlc(3).getName();
+        Naver_sy+=app.getLoc(3).getLatitude();
+        Naver_sx+=app.getLoc(3).getLongitude();
+        text+=Naver_URL+Naver_sname+Naver_sx+Naver_sy+Naver_ename+Naver_ex+Naver_ey+Naver_ext;
+        intent.putExtra(Intent.EXTRA_TEXT,text);
+        Intent chooser=Intent.createChooser(intent,"친구에게 공유하기");
+        startActivity(chooser);
+    }
+    public void onButtonClicked5(View v){
+        C app = (C)getApplicationContext();
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+
+        //set text message
+        String text="[너와 나의 연결 거리]\n" +app.getPlc(4).getName()+" -> "+jsonReceive[0] + "의 길찾기 결과입니다.\n";
+        Naver_sname += app.getPlc(4).getName();
+        Naver_sy+=app.getLoc(4).getLatitude();
+        Naver_sx+=app.getLoc(4).getLongitude();
+        text+=Naver_URL+Naver_sname+Naver_sx+Naver_sy+Naver_ename+Naver_ex+Naver_ey+Naver_ext;
+        intent.putExtra(Intent.EXTRA_TEXT,text);
+        Intent chooser=Intent.createChooser(intent,"친구에게 공유하기");
+        startActivity(chooser);
+    }
+    public void onButtonClicked6(View v){
+        C app = (C)getApplicationContext();
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+
+        //set text message
+        String text="[너와 나의 연결 거리]\n" +app.getPlc(5).getName()+" -> "+jsonReceive[0] + "의 길찾기 결과입니다.\n";
+        Naver_sname += app.getPlc(5).getName();
+        Naver_sy+=app.getLoc(5).getLatitude();
+        Naver_sx+=app.getLoc(5).getLongitude();
+        text+=Naver_URL+Naver_sname+Naver_sx+Naver_sy+Naver_ename+Naver_ex+Naver_ey+Naver_ext;
+        intent.putExtra(Intent.EXTRA_TEXT,text);
+        Intent chooser=Intent.createChooser(intent,"친구에게 공유하기");
+        startActivity(chooser);
+    }
+
 
     private final MyHandler mHandler = new MyHandler(this);
 
@@ -319,6 +420,9 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
         jsonReceive[1]=arraysum[1];
         jsonReceive[2]=arraysum[2];
 
+        Naver_ename += jsonReceive[0];
+        Naver_ey += jsonReceive[1];
+        Naver_ex += jsonReceive[2];
     }
 
 
