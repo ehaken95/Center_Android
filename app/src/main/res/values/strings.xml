@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">CenterPoint</string>
+    <string name="app_name">너와 나의\n연결 거리</string>
+    <string name="titlebar_name">연결 거리</string>
     <string name="main_appname">너와 나의 연결 거리</string>
     <string name="main_select_person">약속을 잡을 인원수를 정해주세요.</string>
     <string name="main_set_location">위 치 설 정 !</string>

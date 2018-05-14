@@ -70,7 +70,7 @@
                     android:onClick="onButtonClicked1"
                     android:padding="12dp"
                     android:scaleType="centerInside"
-                    android:src="@drawable/ico_search"
+                    android:src="@drawable/ico_share"
                     android:visibility="visible" />
 
             </LinearLayout>
@@ -118,7 +118,7 @@
                     android:onClick="onButtonClicked2"
                     android:padding="12dp"
                     android:scaleType="centerInside"
-                    android:src="@drawable/ico_search"
+                    android:src="@drawable/ico_share"
                     android:visibility="visible" />
 
             </LinearLayout>
@@ -165,7 +165,7 @@
                     android:onClick="onButtonClicked3"
                     android:padding="12dp"
                     android:scaleType="centerInside"
-                    android:src="@drawable/ico_search"
+                    android:src="@drawable/ico_share"
                     android:visibility="visible" />
 
             </LinearLayout>
@@ -212,7 +212,7 @@
                     android:onClick="onButtonClicked4"
                     android:padding="12dp"
                     android:scaleType="centerInside"
-                    android:src="@drawable/ico_search"
+                    android:src="@drawable/ico_share"
                     android:visibility="visible" />
 
             </LinearLayout>
@@ -259,7 +259,7 @@
                     android:onClick="onButtonClicked5"
                     android:padding="12dp"
                     android:scaleType="centerInside"
-                    android:src="@drawable/ico_search"
+                    android:src="@drawable/ico_share"
                     android:visibility="visible" />
 
             </LinearLayout>
@@ -306,7 +306,7 @@
                     android:onClick="onButtonClicked6"
                     android:padding="12dp"
                     android:scaleType="centerInside"
-                    android:src="@drawable/ico_search"
+                    android:src="@drawable/ico_share"
                     android:visibility="visible" />
 
             </LinearLayout>

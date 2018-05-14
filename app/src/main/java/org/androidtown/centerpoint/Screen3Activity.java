@@ -1,5 +1,6 @@
 package org.androidtown.centerpoint;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -38,6 +39,9 @@ public class Screen3Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //타이틀바 중앙 정렬
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.custom_titlebar);
         //pos 저장위한 전역변수
         final C app = (C)getApplicationContext();
 
