@@ -2,14 +2,15 @@
     <string name="app_name">너와 나의\n연결 거리</string>
     <string name="titlebar_name">연결 거리</string>
     <string name="main_appname">너와 나의 연결 거리</string>
-    <string name="main_select_person">약속을 잡을 인원수를 정해주세요.</string>
-    <string name="main_set_location">위 치 설 정 !</string>
-    <string name="mapview_set_other_location">다른사람 위치찾기!</string>
+    <string name="main_select_person">중간지점을 찾아줍니다!</string>
+    <string name="main_set_location">상세 위치 설정하러 가기</string>
+    <string name="mapview_set_other_location">출발지 설정</string>
     <string name="sc3_select_person">약속을 잡을 인원수를 정해주세요.</string>
-    <string name="sc3_person_1">1번 이용자</string>
-    <string name="sc3_person_2">2번 이용자</string>
-    <string name="sc3_person_3">3번 이용자</string>
-    <string name="sc3_person_4">4번 이용자</string>
-    <string name="sc3_person_5">5번 이용자</string>
-    <string name="sc3_person_6">6번 이용자</string>
+    <string name="sc3_person_1">위치를 설정해 주세요 -></string>
+    <string name="sc3_person_2">위치를 설정해 주세요 -></string>
+    <string name="sc3_person_3">위치를 설정해 주세요 -></string>
+    <string name="sc3_person_4">위치를 설정해 주세요 -></string>
+    <string name="sc3_person_5">위치를 설정해 주세요 -></string>
+    <string name="sc3_person_6">위치를 설정해 주세요 -></string>
+    <string name="result_label">출발지: </string>
 </resources>

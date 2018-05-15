@@ -68,6 +68,9 @@ public class C extends Application{
     public void setIs_peopleSearchComplete(int position) {
         this.is_peopleSearchComplete[position] = true;
     }
+    public void setFalseIs_peopleSearchComplete(int position){
+        this.is_peopleSearchComplete[position]=false;
+    }
     public boolean getIs_peopleSearchComplete(int position){
         return is_peopleSearchComplete[position];
     }
@@ -75,6 +78,10 @@ public class C extends Application{
     @Override
     public void onCreate(){
         super.onCreate();
+    }
+    @Override
+    public void onTerminate(){
+        super.onTerminate();
     }
     @Override
     public void onConfigurationChanged(Configuration newConfig){

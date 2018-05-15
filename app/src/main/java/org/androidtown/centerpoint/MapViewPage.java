@@ -57,13 +57,15 @@ public class MapViewPage extends FragmentActivity implements OnMapReadyCallback,
             markerOptions.position(currentLocation);
             markerOptions.title(markerTitle);
             markerOptions.snippet(markerSnippet);
-            markerOptions.draggable(true);
+            markerOptions.draggable(false);
             markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
             currentMarker = this.googleMap.addMarker(markerOptions);
+            currentMarker.showInfoWindow();//누르지 않아도 정보창 띄움
             this.googleMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
             return;
         }
         //registerLocationUpdates();
+        /*
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(DEFAULT_LOCATION);
         markerOptions.title(markerTitle);
@@ -71,6 +73,7 @@ public class MapViewPage extends FragmentActivity implements OnMapReadyCallback,
         markerOptions.draggable(true);
         markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
         currentMarker = this.googleMap.addMarker(markerOptions);
+        */
         this.googleMap.moveCamera(CameraUpdateFactory.newLatLng(DEFAULT_LOCATION));
     }
 
@@ -206,15 +209,14 @@ public class MapViewPage extends FragmentActivity implements OnMapReadyCallback,
 
     }
     public void onButtonClicked(View v) {
-        //맵뷰 화면에서 하단 버튼 클릭 시, 만약 위치값이
-        //Default Location일경우
+        //맵뷰 화면에서 하단 버튼 클릭 시
+        //위치를 설정 하지 않았을 경우(마커가 없을 경우)
         //에러와 함께 버튼이 눌리지 않게 해야함
         //좌표값을 3번화면으로 동시에 넘긴다.->전역으로 처리완료
         C app = (C)getApplicationContext();
         Log.i(TAG,"test B");
 
-        if(currentMarker.getPosition().latitude==37.56 &&
-                currentMarker.getPosition().longitude==126.97)
+        if(currentMarker==null)
         {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("안내");
