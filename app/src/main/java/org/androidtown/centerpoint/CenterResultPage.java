@@ -188,13 +188,14 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
 
         //set text message
         String text="[너와 나의 연결 거리]\n" +app.getPlc(0).getName()+" -> "+jsonReceive[0] + "의 길찾기 결과입니다.\n";
-        Naver_sname += app.getPlc(0).getName();
-        Naver_sy+=app.getLoc(0).getLatitude();
-        Naver_sx+=app.getLoc(0).getLongitude();
+        Naver_sname = "&sname=" + app.getPlc(0).getName();
+        Naver_sx= "&sx=" + app.getLoc(0).getLongitude();
+        Naver_sy= "&sy=" + app.getLoc(0).getLatitude();
         text+=Naver_URL+Naver_sname+Naver_sx+Naver_sy+Naver_ename+Naver_ex+Naver_ey+Naver_ext;
         intent.putExtra(Intent.EXTRA_TEXT,text);
         Intent chooser=Intent.createChooser(intent,"친구에게 공유하기");
         startActivity(chooser);
+
 
     }
     public void onButtonClicked2(View v){
@@ -204,9 +205,9 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
 
         //set text message
         String text="[너와 나의 연결 거리]\n" +app.getPlc(1).getName()+" -> "+jsonReceive[0] + "의 길찾기 결과입니다.\n";
-        Naver_sname += app.getPlc(1).getName();
-        Naver_sy+=app.getLoc(1).getLatitude();
-        Naver_sx+=app.getLoc(1).getLongitude();
+        Naver_sname = "&sname=" + app.getPlc(1).getName();
+        Naver_sx= "&sx=" + app.getLoc(1).getLongitude();
+        Naver_sy= "&sy=" + app.getLoc(1).getLatitude();
         text+=Naver_URL+Naver_sname+Naver_sx+Naver_sy+Naver_ename+Naver_ex+Naver_ey+Naver_ext;
         intent.putExtra(Intent.EXTRA_TEXT,text);
         Intent chooser=Intent.createChooser(intent,"친구에게 공유하기");
@@ -220,9 +221,9 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
 
         //set text message
         String text="[너와 나의 연결 거리]\n" +app.getPlc(2).getName()+" -> "+jsonReceive[0] + "의 길찾기 결과입니다.\n";
-        Naver_sname += app.getPlc(2).getName();
-        Naver_sy+=app.getLoc(2).getLatitude();
-        Naver_sx+=app.getLoc(2).getLongitude();
+        Naver_sname = "&sname=" + app.getPlc(2).getName();
+        Naver_sx= "&sx=" + app.getLoc(2).getLongitude();
+        Naver_sy= "&sy=" + app.getLoc(2).getLatitude();
         text+=Naver_URL+Naver_sname+Naver_sx+Naver_sy+Naver_ename+Naver_ex+Naver_ey+Naver_ext;
         intent.putExtra(Intent.EXTRA_TEXT,text);
         Intent chooser=Intent.createChooser(intent,"친구에게 공유하기");
@@ -235,9 +236,9 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
 
         //set text message
         String text="[너와 나의 연결 거리]\n" +app.getPlc(3).getName()+" -> "+jsonReceive[0] + "의 길찾기 결과입니다.\n";
-        Naver_sname += app.getPlc(3).getName();
-        Naver_sy+=app.getLoc(3).getLatitude();
-        Naver_sx+=app.getLoc(3).getLongitude();
+        Naver_sname = "&sname=" + app.getPlc(3).getName();
+        Naver_sx= "&sx=" + app.getLoc(3).getLongitude();
+        Naver_sy= "&sy=" + app.getLoc(3).getLatitude();
         text+=Naver_URL+Naver_sname+Naver_sx+Naver_sy+Naver_ename+Naver_ex+Naver_ey+Naver_ext;
         intent.putExtra(Intent.EXTRA_TEXT,text);
         Intent chooser=Intent.createChooser(intent,"친구에게 공유하기");
@@ -250,9 +251,9 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
 
         //set text message
         String text="[너와 나의 연결 거리]\n" +app.getPlc(4).getName()+" -> "+jsonReceive[0] + "의 길찾기 결과입니다.\n";
-        Naver_sname += app.getPlc(4).getName();
-        Naver_sy+=app.getLoc(4).getLatitude();
-        Naver_sx+=app.getLoc(4).getLongitude();
+        Naver_sname = "&sname=" + app.getPlc(4).getName();
+        Naver_sx= "&sx=" + app.getLoc(4).getLongitude();
+        Naver_sy= "&sy=" + app.getLoc(4).getLatitude();
         text+=Naver_URL+Naver_sname+Naver_sx+Naver_sy+Naver_ename+Naver_ex+Naver_ey+Naver_ext;
         intent.putExtra(Intent.EXTRA_TEXT,text);
         Intent chooser=Intent.createChooser(intent,"친구에게 공유하기");
@@ -265,9 +266,9 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
 
         //set text message
         String text="[너와 나의 연결 거리]\n" +app.getPlc(5).getName()+" -> "+jsonReceive[0] + "의 길찾기 결과입니다.\n";
-        Naver_sname += app.getPlc(5).getName();
-        Naver_sy+=app.getLoc(5).getLatitude();
-        Naver_sx+=app.getLoc(5).getLongitude();
+        Naver_sname = "&sname=" + app.getPlc(5).getName();
+        Naver_sx= "&sx=" + app.getLoc(5).getLongitude();
+        Naver_sy= "&sy=" + app.getLoc(5).getLatitude();
         text+=Naver_URL+Naver_sname+Naver_sx+Naver_sy+Naver_ename+Naver_ex+Naver_ey+Naver_ext;
         intent.putExtra(Intent.EXTRA_TEXT,text);
         Intent chooser=Intent.createChooser(intent,"친구에게 공유하기");
