@@ -279,7 +279,7 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
     private final MyHandler mHandler = new MyHandler(this);
 
 
-    private static class MyHandler extends Handler {
+    private class MyHandler extends Handler {
         private final WeakReference<CenterResultPage> weakReference;
 
         public MyHandler(CenterResultPage centerResultPage) {

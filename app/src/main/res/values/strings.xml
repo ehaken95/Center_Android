@@ -3,7 +3,7 @@
     <string name="titlebar_name">연결 거리</string>
     <string name="main_appname">너와 나의 연결 거리</string>
     <string name="main_select_person">중간지점을 찾아줍니다!</string>
-    <string name="main_set_location">위 치 설 정 !</string>
+    <string name="main_set_location">상세 위치 설정하러 가기</string>
     <string name="mapview_set_other_location">출발지 설정</string>
     <string name="sc3_select_person">약속을 잡을 인원수를 정해주세요.</string>
     <string name="sc3_person_1">위치를 설정해 주세요 -></string>

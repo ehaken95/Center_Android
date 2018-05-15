@@ -8,7 +8,6 @@ android:layout_height="match_parent">
         android:id="@+id/firstImageView"
         android:layout_width="250dp"
         android:layout_height="250dp"
-        app:srcCompat="@drawable/img_firstpage"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp"/>
     <LinearLayout
@@ -26,7 +25,7 @@ android:layout_height="match_parent">
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:gravity="center_vertical|center_horizontal"
             android:text="@string/main_select_person"
             android:textColor="#FFFFFF"
@@ -34,7 +33,7 @@ android:layout_height="match_parent">
         <!-- spinnermode가 스피너를 팝업으로 구현한 것. -->
         <Spinner
             android:id="@+id/spinner"
-            android:layout_width="40dp"
+            android:layout_width="20dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical|center_horizontal"
             android:layout_weight="1"
@@ -53,5 +52,7 @@ android:layout_height="match_parent">
         android:layout_below="@id/firstpline"
         android:text="@string/main_set_location"
         android:textColor="#FFFFFF"
-        android:background="@drawable/textview_round"/>
+        android:textSize="15sp"
+        style="?android:attr/borderlessButtonStyle"
+        android:background="@drawable/clickable_effect_roundbutton"/>
 </RelativeLayout>

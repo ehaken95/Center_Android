@@ -9,8 +9,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import java.lang.reflect.Field;
 
@@ -20,18 +22,25 @@ import java.lang.reflect.Field;
 
 
 public class MainActivity extends AppCompatActivity {
-    private static String str_sel;
-    TextView textView;
-    String[] items = {"선택!","2","3","4","5","6"};
+    private String str_sel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        String[] items = {"선택!","2","3","4","5","6"};
         //타이틀바 중앙 정렬
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.custom_titlebar);
 
+
+        //************************************
+        //OOM에러로 인한 Glide라이브러리 추가
         setContentView(R.layout.activity_main);
+        ImageView iv=(ImageView)findViewById(R.id.firstImageView);
+        //iv.setImageResource(R.drawable.img_firstpage);
+        Glide.with(this).load(R.drawable.img_firstpage).into(iv);
+        //**********************************
+
 
         //스피너를 final 로 바꿈->선택값 저장하기 위해서
         final Spinner spinner = (Spinner)findViewById(R.id.spinner);
@@ -69,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> adapterView){
             }
         });
-        
+
     }
     //선택된 값을 다음 화면으로 넘기기 위한 구문
     public void onButtonClicked(View v) {
