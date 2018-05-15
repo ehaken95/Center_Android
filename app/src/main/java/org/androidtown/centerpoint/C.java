@@ -80,6 +80,10 @@ public class C extends Application{
         super.onCreate();
     }
     @Override
+    public void onTerminate(){
+        super.onTerminate();
+    }
+    @Override
     public void onConfigurationChanged(Configuration newConfig){
         super.onConfigurationChanged(newConfig);
     }
