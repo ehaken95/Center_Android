@@ -67,7 +67,7 @@
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_weight="5"
             android:gravity="center_vertical|center_horizontal"
@@ -115,7 +115,7 @@
 
         <TextView
             android:id="@+id/textView3"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_weight="5"
             android:gravity="center_vertical|center_horizontal"
@@ -162,7 +162,7 @@
 
         <TextView
             android:id="@+id/textView4"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_weight="5"
             android:gravity="center_vertical|center_horizontal"
@@ -209,7 +209,7 @@
 
         <TextView
             android:id="@+id/textView5"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_weight="5"
             android:gravity="center_vertical|center_horizontal"
@@ -256,7 +256,7 @@
 
         <TextView
             android:id="@+id/textView6"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_weight="5"
             android:gravity="center_vertical|center_horizontal"
@@ -303,7 +303,7 @@
 
         <TextView
             android:id="@+id/textView7"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_weight="5"
             android:gravity="center_vertical|center_horizontal"

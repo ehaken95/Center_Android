@@ -165,17 +165,17 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
 
         for(int i=0; i<app.getNum_people();i++){
             switch (i){
-                case 0:textViewfir.setText(app.getPlc(0).getName());
+                case 0:textViewfir.append(app.getPlc(0).getName());
                     break;
-                case 1:textViewsec.setText(app.getPlc(1).getName());
+                case 1:textViewsec.append(app.getPlc(1).getName());
                     break;
-                case 2:textView.setText(app.getPlc(2).getName());
+                case 2:textView.append(app.getPlc(2).getName());
                     break;
-                case 3:textView2.setText(app.getPlc(3).getName());
+                case 3:textView2.append(app.getPlc(3).getName());
                     break;
-                case 4:textView3.setText(app.getPlc(4).getName());
+                case 4:textView3.append(app.getPlc(4).getName());
                     break;
-                case 5:textView4.setText(app.getPlc(5).getName());
+                case 5:textView4.append(app.getPlc(5).getName());
                     break;
             }
         }
@@ -313,7 +313,8 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
         LatLng loc = new LatLng(lat,lng);
         this.googleMap.addMarker(new MarkerOptions()
                 .position(loc)
-                .title(jsonReceive[0]));
+                .title("중간 지하철역 : " + jsonReceive[0]))
+                .showInfoWindow();//마커가 눌리지 않아도 정보 표시
         this.googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc,15));
     }
 

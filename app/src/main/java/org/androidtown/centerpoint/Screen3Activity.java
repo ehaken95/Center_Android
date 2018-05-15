@@ -44,7 +44,9 @@ public class Screen3Activity extends AppCompatActivity {
         getSupportActionBar().setCustomView(R.layout.custom_titlebar);
         //pos 저장위한 전역변수
         final C app = (C)getApplicationContext();
-
+        for(int i=0;i<5;i++) {
+            app.setFalseIs_peopleSearchComplete(i);
+        }
         //맵에서 텍스트뷰 쓰기 위함
         mContext=this;
 
@@ -133,35 +135,63 @@ public class Screen3Activity extends AppCompatActivity {
     //인원 선택값에 따른 ui숨김/노출 설정
     public void setVisibility(int pos){
 
+        C app = (C)getApplicationContext();
         LinearLayout linear1 = (LinearLayout)findViewById(line4);
         LinearLayout linear2 = (LinearLayout)findViewById(line5);
         LinearLayout linear3 = (LinearLayout)findViewById(line6);
         LinearLayout linear4 = (LinearLayout)findViewById(line7);
-
         switch(pos) {
             case 0:
                 linear1.setVisibility(View.INVISIBLE);
                 linear2.setVisibility(View.INVISIBLE);
                 linear3.setVisibility(View.INVISIBLE);
                 linear4.setVisibility(View.INVISIBLE);
+                for(int i=2;i<=5;i++) {
+                    if (app.getLoc(i) != null) {
+                        app.setLoc(null, i);
+                        app.setPlc(null,i);
+                        app.setFalseIs_peopleSearchComplete(i);
+                    }
+                }
                 break;
             case 1:
                 linear1.setVisibility(View.VISIBLE);
                 linear2.setVisibility(View.INVISIBLE);
                 linear3.setVisibility(View.INVISIBLE);
                 linear4.setVisibility(View.INVISIBLE);
+                for(int i=3;i<=5;i++) {
+                    if (app.getLoc(i) != null) {
+                        app.setLoc(null, i);
+                        app.setPlc(null,i);
+                        app.setFalseIs_peopleSearchComplete(i);
+                    }
+                }
                 break;
             case 2:
                 linear1.setVisibility(View.VISIBLE);
                 linear2.setVisibility(View.VISIBLE);
                 linear3.setVisibility(View.INVISIBLE);
                 linear4.setVisibility(View.INVISIBLE);
+                for(int i=4;i<=5;i++) {
+                    if (app.getLoc(i) != null) {
+                        app.setLoc(null, i);
+                        app.setPlc(null,i);
+                        app.setFalseIs_peopleSearchComplete(i);
+                    }
+                }
                 break;
             case 3:
                 linear1.setVisibility(View.VISIBLE);
                 linear2.setVisibility(View.VISIBLE);
                 linear3.setVisibility(View.VISIBLE);
                 linear4.setVisibility(View.INVISIBLE);
+                for(int i=5;i<=5;i++) {
+                    if (app.getLoc(i) != null) {
+                        app.setLoc(null, i);
+                        app.setPlc(null,i);
+                        app.setFalseIs_peopleSearchComplete(i);
+                    }
+                }
                 break;
             case 4:
                 linear1.setVisibility(View.VISIBLE);
@@ -170,8 +200,43 @@ public class Screen3Activity extends AppCompatActivity {
                 linear4.setVisibility(View.VISIBLE);
                 break;
         }
+        changed_pos_then_setTextView(pos);
     }
-    public void setTextView(){
+
+    public void changed_pos_then_setTextView(int pos){//스피너 값변경에 따른 텍스트뷰 재설정
+
+        TextView textView1 = (TextView) findViewById(textView4);
+        TextView textView2 = (TextView) findViewById(textView5);
+        TextView textView3 = (TextView) findViewById(textView6);
+        TextView textView4 = (TextView) findViewById(textView7);
+
+        switch (pos){
+            case 0:
+                textView1.setText(R.string.sc3_person_3);
+                textView2.setText(R.string.sc3_person_4);
+                textView3.setText(R.string.sc3_person_5);
+                textView4.setText(R.string.sc3_person_6);
+
+                break;
+            case 1:
+                textView2.setText(R.string.sc3_person_4);
+                textView3.setText(R.string.sc3_person_5);
+                textView4.setText(R.string.sc3_person_6);
+                break;
+            case 2:
+                textView3.setText(R.string.sc3_person_5);
+                textView4.setText(R.string.sc3_person_6);
+                break;
+            case 3:
+                textView4.setText(R.string.sc3_person_6);
+                break;
+            case 4:
+                break;
+        }
+
+
+    }
+    public void setTextView(){//맵뷰와 연동되는 텍스트뷰 설정
 
         TextView textViewfir = (TextView) findViewById(textView2);
         TextView textViewsec = (TextView) findViewById(textView3);
