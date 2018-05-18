@@ -53,7 +53,7 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
     private String ext = "&language=ko&radius=";
     private String radius = "10000";
     private String ext1 = "&type=subway_station&key=";
-    private String API_KEY  = "AIzaSyBBsRw3z-ayQvdL2h3vtVloNZqOWyzwnZA";
+    private String API_KEY  = "AIzaSyDk0eT1IVTYW5HKgsAhxSprnRKjhyC3Wsg";
     private String REQUEST_URL = GOOGLE_URL+send_lat+send_lon+ext+radius+ext1+API_KEY;
     private Double mid_lat;
     private Double mid_lng;
@@ -328,7 +328,7 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("죄송합니다.");
             builder.setMessage("너무 먼 거리간의 검색 혹은 주변 지하철이 없어\n지하철 검색이 되지 않습니다.\n빠른 시일내에" +
-                    "해결하도록 하겠습니다.\n감사합니다.");
+                    " 해결하도록 하겠습니다.\n감사합니다.");
             builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -337,7 +337,6 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
             });
             AlertDialog dialog = builder.create();
             dialog.show();
-            //finish();
         }
 
 
