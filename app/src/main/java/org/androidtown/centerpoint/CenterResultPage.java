@@ -1,12 +1,14 @@
 package org.androidtown.centerpoint;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -106,7 +108,11 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
         }catch (InterruptedException e){
 
         }
-        jsonParser(receiveJSON);
+        try {
+            jsonParser(receiveJSON);
+        }catch (ArrayIndexOutOfBoundsException e){
+
+        }
         MapFragment mapFragment = (MapFragment) getFragmentManager()
                 .findFragmentById(R.id.resultmap);
         mapFragment.getMapAsync(this);
@@ -309,14 +315,32 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
         this.googleMap = googleMap;
         // 매끄럽게 이동함
         googleMap.animateCamera(CameraUpdateFactory.zoomTo(15));
-        Double lat = Double.parseDouble(jsonReceive[1]);
-        Double lng = Double.parseDouble(jsonReceive[2]);
-        LatLng loc = new LatLng(lat,lng);
-        this.googleMap.addMarker(new MarkerOptions()
-                .position(loc)
-                .title("중간 지하철역 : " + jsonReceive[0]))
-                .showInfoWindow();//마커가 눌리지 않아도 정보 표시
-        this.googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc,15));
+        try{
+            Double lat = Double.parseDouble(jsonReceive[1]);
+            Double lng = Double.parseDouble(jsonReceive[2]);
+            LatLng loc = new LatLng(lat,lng);
+            this.googleMap.addMarker(new MarkerOptions()
+                    .position(loc)
+                    .title("중간 지하철역 : " + jsonReceive[0]))
+                    .showInfoWindow();//마커가 눌리지 않아도 정보 표시
+            this.googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc,15));
+        }catch (Exception e){
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("죄송합니다.");
+            builder.setMessage("너무 먼 거리간의 검색 혹은 주변 지하철이 없어\n지하철 검색이 되지 않습니다.\n빠른 시일내에" +
+                    "해결하도록 하겠습니다.\n감사합니다.");
+            builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                }
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+            //finish();
+        }
+
+
     }
 
     public class getJSONThread extends Thread{
