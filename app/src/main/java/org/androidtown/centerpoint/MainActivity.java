@@ -15,10 +15,6 @@ import android.widget.Spinner;
 import com.bumptech.glide.Glide;
 
 import java.lang.reflect.Field;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
 /**
  * Created by Seo Sung Joon on 2018-02-11 011.
@@ -46,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         //***************************************
 
         //**베타 테스트 어플을 위한 사용 제한 알림 문구** //
+        /*
         AlertDialog.Builder tst = new AlertDialog.Builder(this);
         tst.setTitle("베타 테스트 어플리케이션");
         tst.setMessage("본 어플은 베타 테스트 어플이며\n" +
@@ -96,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
             AlertDialog dialog = builder.create();
             dialog.show();
         }
-
+        */
         //***********************베타 테스트 안내 문구 종료***************//
 
         //스피너를 final 로 바꿈->선택값 저장하기 위해서
