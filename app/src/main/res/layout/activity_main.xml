@@ -33,7 +33,7 @@ android:layout_height="match_parent">
         <!-- spinnermode가 스피너를 팝업으로 구현한 것. -->
         <Spinner
             android:id="@+id/spinner"
-            android:layout_width="20dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical|center_horizontal"
             android:layout_weight="1"

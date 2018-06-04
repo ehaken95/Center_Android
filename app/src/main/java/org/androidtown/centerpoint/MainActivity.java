@@ -39,8 +39,62 @@ public class MainActivity extends AppCompatActivity {
         ImageView iv=(ImageView)findViewById(R.id.firstImageView);
         //iv.setImageResource(R.drawable.img_firstpage);
         Glide.with(this).load(R.drawable.img_firstpage).into(iv);
-        //**********************************
+        //***************************************
 
+        //**베타 테스트 어플을 위한 사용 제한 알림 문구** //
+        /*
+        AlertDialog.Builder tst = new AlertDialog.Builder(this);
+        tst.setTitle("베타 테스트 어플리케이션");
+        tst.setMessage("본 어플은 베타 테스트 어플이며\n" +
+                "2018/05/23 23:59 이후부터는 사용할 수 없습니다.\n" +
+                "충분히 사용해 보시고\n" +
+                "메시지로 안내드린 설문조사에 응해주시면" +
+                "\n추첨을 통해 기프티콘을 드리도록 하겠습니다." +
+                "\n감사합니다.");
+        tst.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        AlertDialog tt = tst.create();
+        tt.show();
+
+        Date testEndDate;
+        Date currentDate;
+        String oTime="";
+        String endDate="2018년05월23일 23:59";
+        SimpleDateFormat mSimpleDateFormat=new SimpleDateFormat("yyyy년MM월dd일 HH:mm", Locale.KOREA);
+        Date currentTime=new Date();
+        oTime = mSimpleDateFormat.format(currentTime);//현재시간 (string)
+        try {
+            testEndDate = mSimpleDateFormat.parse(endDate);
+            currentDate = mSimpleDateFormat.parse(oTime);
+
+        }catch (ParseException e){
+            return;
+        }
+
+        int compare = currentDate.compareTo(testEndDate);
+        if(compare>0){
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("감사합니다.");
+            builder.setMessage("본 테스트 어플의 사용 기한이 만료되었습니다.\n" +
+                    "지금까지 사용해 주셔서 감사드리며\n" +
+                    "제출해 주신 피드백을 토대로\n" +
+                    "개선된 어플로 정식 출시때 찾아뵙겠습니다." +
+                    "본 어플은 삭제 부탁드립니다."+
+                    "\n감사합니다.");
+            builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                }
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
+        */
+        //***********************베타 테스트 안내 문구 종료***************//
 
         //스피너를 final 로 바꿈->선택값 저장하기 위해서
         final Spinner spinner = (Spinner)findViewById(R.id.spinner);

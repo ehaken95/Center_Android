@@ -1,12 +1,14 @@
 package org.androidtown.centerpoint;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -51,7 +53,7 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
     private String ext = "&language=ko&radius=";
     private String radius = "10000";
     private String ext1 = "&type=subway_station&key=";
-    private String API_KEY  = "AIzaSyBBsRw3z-ayQvdL2h3vtVloNZqOWyzwnZA";
+    private String API_KEY  = "AIzaSyDk0eT1IVTYW5HKgsAhxSprnRKjhyC3Wsg";
     private String REQUEST_URL = GOOGLE_URL+send_lat+send_lon+ext+radius+ext1+API_KEY;
     private Double mid_lat;
     private Double mid_lng;
@@ -106,7 +108,11 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
         }catch (InterruptedException e){
 
         }
-        jsonParser(receiveJSON);
+        try {
+            jsonParser(receiveJSON);
+        }catch (ArrayIndexOutOfBoundsException e){
+
+        }
         MapFragment mapFragment = (MapFragment) getFragmentManager()
                 .findFragmentById(R.id.resultmap);
         mapFragment.getMapAsync(this);
@@ -185,10 +191,11 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
         C app = (C)getApplicationContext();
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
-
+        String trimstr= (String) app.getPlc(0).getName();
+        trimstr=trimstr.replaceAll(" ","");
         //set text message
         String text="[너와 나의 연결 거리]\n" +app.getPlc(0).getName()+" -> "+jsonReceive[0] + "의 길찾기 결과입니다.\n";
-        Naver_sname = "&sname=" + app.getPlc(0).getName();
+        Naver_sname = "&sname=" + trimstr;
         Naver_sx= "&sx=" + app.getLoc(0).getLongitude();
         Naver_sy= "&sy=" + app.getLoc(0).getLatitude();
         text+=Naver_URL+Naver_sname+Naver_sx+Naver_sy+Naver_ename+Naver_ex+Naver_ey+Naver_ext;
@@ -202,10 +209,11 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
         C app = (C)getApplicationContext();
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
-
+        String trimstr= (String) app.getPlc(1).getName();
+        trimstr=trimstr.replaceAll(" ","");
         //set text message
         String text="[너와 나의 연결 거리]\n" +app.getPlc(1).getName()+" -> "+jsonReceive[0] + "의 길찾기 결과입니다.\n";
-        Naver_sname = "&sname=" + app.getPlc(1).getName();
+        Naver_sname = "&sname=" + trimstr;
         Naver_sx= "&sx=" + app.getLoc(1).getLongitude();
         Naver_sy= "&sy=" + app.getLoc(1).getLatitude();
         text+=Naver_URL+Naver_sname+Naver_sx+Naver_sy+Naver_ename+Naver_ex+Naver_ey+Naver_ext;
@@ -218,10 +226,11 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
         C app = (C)getApplicationContext();
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
-
+        String trimstr= (String) app.getPlc(2).getName();
+        trimstr=trimstr.replaceAll(" ","");
         //set text message
         String text="[너와 나의 연결 거리]\n" +app.getPlc(2).getName()+" -> "+jsonReceive[0] + "의 길찾기 결과입니다.\n";
-        Naver_sname = "&sname=" + app.getPlc(2).getName();
+        Naver_sname = "&sname=" + trimstr;
         Naver_sx= "&sx=" + app.getLoc(2).getLongitude();
         Naver_sy= "&sy=" + app.getLoc(2).getLatitude();
         text+=Naver_URL+Naver_sname+Naver_sx+Naver_sy+Naver_ename+Naver_ex+Naver_ey+Naver_ext;
@@ -233,10 +242,11 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
         C app = (C)getApplicationContext();
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
-
+        String trimstr= (String) app.getPlc(3).getName();
+        trimstr=trimstr.replaceAll(" ","");
         //set text message
         String text="[너와 나의 연결 거리]\n" +app.getPlc(3).getName()+" -> "+jsonReceive[0] + "의 길찾기 결과입니다.\n";
-        Naver_sname = "&sname=" + app.getPlc(3).getName();
+        Naver_sname = "&sname=" + trimstr;
         Naver_sx= "&sx=" + app.getLoc(3).getLongitude();
         Naver_sy= "&sy=" + app.getLoc(3).getLatitude();
         text+=Naver_URL+Naver_sname+Naver_sx+Naver_sy+Naver_ename+Naver_ex+Naver_ey+Naver_ext;
@@ -248,10 +258,11 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
         C app = (C)getApplicationContext();
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
-
+        String trimstr= (String) app.getPlc(4).getName();
+        trimstr=trimstr.replaceAll(" ","");
         //set text message
         String text="[너와 나의 연결 거리]\n" +app.getPlc(4).getName()+" -> "+jsonReceive[0] + "의 길찾기 결과입니다.\n";
-        Naver_sname = "&sname=" + app.getPlc(4).getName();
+        Naver_sname = "&sname=" + trimstr;
         Naver_sx= "&sx=" + app.getLoc(4).getLongitude();
         Naver_sy= "&sy=" + app.getLoc(4).getLatitude();
         text+=Naver_URL+Naver_sname+Naver_sx+Naver_sy+Naver_ename+Naver_ex+Naver_ey+Naver_ext;
@@ -263,10 +274,11 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
         C app = (C)getApplicationContext();
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
-
+        String trimstr= (String) app.getPlc(5).getName();
+        trimstr=trimstr.replaceAll(" ","");
         //set text message
         String text="[너와 나의 연결 거리]\n" +app.getPlc(5).getName()+" -> "+jsonReceive[0] + "의 길찾기 결과입니다.\n";
-        Naver_sname = "&sname=" + app.getPlc(5).getName();
+        Naver_sname = "&sname=" + trimstr;
         Naver_sx= "&sx=" + app.getLoc(5).getLongitude();
         Naver_sy= "&sy=" + app.getLoc(5).getLatitude();
         text+=Naver_URL+Naver_sname+Naver_sx+Naver_sy+Naver_ename+Naver_ex+Naver_ey+Naver_ext;
@@ -309,14 +321,31 @@ public class CenterResultPage extends FragmentActivity implements OnMapReadyCall
         this.googleMap = googleMap;
         // 매끄럽게 이동함
         googleMap.animateCamera(CameraUpdateFactory.zoomTo(15));
-        Double lat = Double.parseDouble(jsonReceive[1]);
-        Double lng = Double.parseDouble(jsonReceive[2]);
-        LatLng loc = new LatLng(lat,lng);
-        this.googleMap.addMarker(new MarkerOptions()
-                .position(loc)
-                .title("중간 지하철역 : " + jsonReceive[0]))
-                .showInfoWindow();//마커가 눌리지 않아도 정보 표시
-        this.googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc,15));
+        try{
+            Double lat = Double.parseDouble(jsonReceive[1]);
+            Double lng = Double.parseDouble(jsonReceive[2]);
+            LatLng loc = new LatLng(lat,lng);
+            this.googleMap.addMarker(new MarkerOptions()
+                    .position(loc)
+                    .title("중간 지하철역 : " + jsonReceive[0]))
+                    .showInfoWindow();//마커가 눌리지 않아도 정보 표시
+            this.googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc,15));
+        }catch (Exception e){
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("죄송합니다.");
+            builder.setMessage("너무 먼 거리간의 검색 혹은 주변 지하철이 없어\n지하철 검색이 되지 않습니다.\n빠른 시일내에" +
+                    " 해결하도록 하겠습니다.\n감사합니다.");
+            builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                }
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
+
+
     }
 
     public class getJSONThread extends Thread{
