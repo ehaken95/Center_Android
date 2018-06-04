@@ -72,16 +72,6 @@ public class MapViewPage extends FragmentActivity implements OnMapReadyCallback,
             this.googleMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
             return;
         }
-        //registerLocationUpdates();
-        /*
-        MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(DEFAULT_LOCATION);
-        markerOptions.title(markerTitle);
-        markerOptions.snippet(markerSnippet);
-        markerOptions.draggable(true);
-        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
-        currentMarker = this.googleMap.addMarker(markerOptions);
-        */
         this.googleMap.moveCamera(CameraUpdateFactory.newLatLng(DEFAULT_LOCATION));
     }
 
@@ -117,14 +107,9 @@ public class MapViewPage extends FragmentActivity implements OnMapReadyCallback,
                 location.setLatitude(place.getLatLng().latitude);
                 location.setLongitude(place.getLatLng().longitude);
 
-                //test---------------------------------------------------
-
                 C app = (C)getApplicationContext();
                 app.setLoc(location,app.getNum_buttonclicked());
                 app.setPlc(place,app.getNum_buttonclicked());
-
-
-                //end---------------------------------------------------
 
                 setCurrentLocation(location, place.getName().toString(), place.getAddress().toString());
             }
@@ -135,7 +120,7 @@ public class MapViewPage extends FragmentActivity implements OnMapReadyCallback,
                 Log.i(TAG, "An error occurred: " + status);
             }
         });
-        //지역 범주 제한 설정, 일단은 서울권으로 설정
+
         autocompleteFragment.setBoundsBias(new LatLngBounds(
                 new LatLng(37.432596, 126.810879),
                 new LatLng(37.693709, 127.171560)));
@@ -283,7 +268,6 @@ public class MapViewPage extends FragmentActivity implements OnMapReadyCallback,
                 if (googleApiClient == null) {
                     ;
                 }
-
                 if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)
                 {
                     googleMap.setMyLocationEnabled(false);
@@ -326,49 +310,8 @@ public class MapViewPage extends FragmentActivity implements OnMapReadyCallback,
             this.finish();//맵뷰 화면을 종료하고 이전 화면으로 넘어간다.
         }
 
-
     }
 
-
-//    LocationManager mLM = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-//    private void registerLocationUpdates() {
-//        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-//            // TODO: Consider calling
-//            //    ActivityCompat#requestPermissions
-//            // here to request the missing permissions, and then overriding
-//            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-//            //                                          int[] grantResults)
-//            // to handle the case where the user grants the permission. See the documentation
-//            // for ActivityCompat#requestPermissions for more details.
-//            return;
-//        }
-//        mLM.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 1, defaultLocationListener);
-//        mLM.requestLocationUpdates(LocationManager.GPS_PROVIDER,1000,1,defaultLocationListener);
-//    }
-//    private final LocationListener defaultLocationListener = new LocationListener() {
-//        @Override
-//        public void onLocationChanged(Location location) {
-//            double longitude = location.getLongitude();//경
-//            double latitude =location.getLatitude();//위
-//            DEFAULT_LOCATION = new LatLng(longitude,latitude);
-//            String provider = location.getProvider();//위치제공자
-//        }
-//
-//        @Override
-//        public void onStatusChanged(String provider, int status, Bundle extras) {
-//
-//        }
-//
-//        @Override
-//        public void onProviderEnabled(String provider) {
-//
-//        }
-//
-//        @Override
-//        public void onProviderDisabled(String provider) {
-//
-//        }
-//    };
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 

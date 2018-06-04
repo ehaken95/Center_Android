@@ -17,7 +17,7 @@ import com.bumptech.glide.Glide;
 import java.lang.reflect.Field;
 
 /**
- * Created by Seo Sung Joon on 2018-02-11 011.
+ * Created by Seo Sung Joon on 2018-03-02 011.
  */
 
 
@@ -153,8 +153,6 @@ public class MainActivity extends AppCompatActivity {
             AlertDialog dialog = builder.create();
             dialog.show();
         }
-        //    Intent intent = new Intent(getApplicationContext(),Screen3Activity.class);
-    //    startActivity(intent);
     }
 }
 

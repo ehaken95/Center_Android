@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 /**
- * Created by Seo Sung Joon on 2017-09-11 011.
+ * Created by Seo Sung Joon on 2018-03-01 011.
  */
 //어플 실행시 화면
 public class SplashActivity extends Activity{
