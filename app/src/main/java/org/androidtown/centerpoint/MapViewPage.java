@@ -266,8 +266,8 @@ public class MapViewPage extends FragmentActivity implements OnMapReadyCallback,
         //런타임 퍼미션 요청 대화상자나 GPS 활성 요청 대화상자 보이기전에 지도의 초기위치를 서울로 이동
         Log.i(TAG, "start");
         setCurrentLocation(null, "위치정보 가져올 수 없음", "위치 퍼미션과 GPS 활성 여부 확인");
-        //나침반이 나타나도록 설정
-        //googleMap.getUiSettings().setCompassEnabled(true);
+        //나침반이 나타나지 않도록
+        googleMap.getUiSettings().setCompassEnabled(false);
         // 매끄럽게 이동함
         googleMap.animateCamera(CameraUpdateFactory.zoomTo(15));
         //  API 23 이상이면 런타임 퍼미션 처리 필요
@@ -286,13 +286,13 @@ public class MapViewPage extends FragmentActivity implements OnMapReadyCallback,
 
                 if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)
                 {
-                    googleMap.setMyLocationEnabled(true);
+                    googleMap.setMyLocationEnabled(false);
                 }
             }
         } else {
             if (googleApiClient == null) {
             }
-            googleMap.setMyLocationEnabled(true);
+            googleMap.setMyLocationEnabled(false);
         }
         //맵뷰클릭마커
         googleMap.setOnMapClickListener(this);
